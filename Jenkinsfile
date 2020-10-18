@@ -22,9 +22,7 @@ parameters {
 }
 
 node {
-    stage('Example') {
-        steps {
-            echo "${params.Greeting} World!"
-        }
+    stage('WIP') {
+        echo "${params.Greeting} World!"
     }
 }
