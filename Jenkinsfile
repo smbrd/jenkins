@@ -16,20 +16,20 @@ properties[
                 cron(env.BRANCH_NAME != 'master' ? 'H * * * *' : '')
         ]),
         parameters {
-            string(name: 'Order IDs', defaultValue: '', description: '')
-            choice(name: 'Test scenario',
+            string(name: 'ORDER_IDS', defaultValue: '', description: 'Order IDs')
+            choice(name: 'TEST_SCENARIO',
                     choices: ['run_sanity_stg.sh',
                               'run_confirmed_shipment_tracking_number_stg.sh',
                               'run_item_cancellation_stg.sh',
                               'run_item_return_stg.sh'],
                     defaultValue: 'run_sanity_stg.sh',
-                    description: '')
+                    description: 'Test scenario')
         }
 ]
 
 
 node {
     stage('WIP') {
-        echo "${params.Greeting} World!"
+        echo "${params.TEST_SCENARIO} ${params.ORDER_IDS}"
     }
 }
